@@ -13,11 +13,9 @@ func main() {
 	var version = 0.01
 	// Shorthand variable declaration
 	iterations := 1
-
 	startup(author, version, iterations)
 	input := readInput()
-
-	switchFlow(input)
+	processInput(input)
 }
 
 func startup(author string, version float64, iterations int) {
@@ -41,16 +39,16 @@ func readInput() int {
 	return input
 }
 
-func switchFlow(input int) {
-	var dateFormat string = "01-02-2006 15:04:05 Monday"
+func processInput(input int) {
 	var systemOs string = runtime.GOOS
-	var date time.Time = time.Now()
+	var dateFormat string = "01-02-2006 15:04:05 Monday"
+	var formattedDate string = time.Now().Format(dateFormat)
 	var cpuQuantity int = runtime.NumCPU()
 	switch input {
 	case 1:
 		fmt.Println("Current Running System:", systemOs)
 	case 2:
-		fmt.Println("Current Date:", date.Format(dateFormat))
+		fmt.Println("Current Date:", formattedDate)
 	case 3:
 		fmt.Println("Quantity of CPUs in the System:", cpuQuantity)
 	case 4:
